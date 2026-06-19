@@ -20,6 +20,7 @@ class OverlayManager(QObject):
 
         self._dock_window.browser_clicked.connect(self._launcher.launch_chrome)
         self._dock_window.translator_clicked.connect(self._show_translator)
+        self._dock_window.close_clicked.connect(QApplication.quit)
 
     def show(self) -> None:
         self._position_windows()

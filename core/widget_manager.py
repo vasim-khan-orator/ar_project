@@ -34,6 +34,7 @@ class WidgetManager(QWidget):
         self._icons.object_detection_clicked.connect(self._object_detection.launch)
         self._icons.voice_assistant_clicked.connect(self._voice_assistant.launch)
         self._icons.system_menu_clicked.connect(self.system_menu_requested.emit)
+        self._icons.close_clicked.connect(self._quit_app)
 
         self._orb = AiOrb(self)
 
@@ -46,3 +47,8 @@ class WidgetManager(QWidget):
     @property
     def interactive_widget(self) -> QWidget:
         return self._icons
+
+    def _quit_app(self) -> None:
+        from PyQt6.QtWidgets import QApplication
+
+        QApplication.quit()
